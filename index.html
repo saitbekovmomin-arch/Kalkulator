@@ -1,5 +1,6 @@
-t<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -14,7 +15,8 @@ t<!DOCTYPE html>
             font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
         }
 
-        body, html {
+        body,
+        html {
             width: 100%;
             height: 100%;
             overflow: hidden;
@@ -79,8 +81,15 @@ t<!DOCTYPE html>
             font-style: italic;
         }
 
-        .val-coins { color: #facc15; text-shadow: 0 0 10px rgba(250, 204, 21, 0.5); }
-        .val-score { color: #38bdf8; text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
+        .val-coins {
+            color: #facc15;
+            text-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+        }
+
+        .val-score {
+            color: #38bdf8;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+        }
 
         .btn-hud {
             pointer-events: auto;
@@ -96,7 +105,7 @@ t<!DOCTYPE html>
             cursor: pointer;
             font-size: 16px;
             font-weight: bold;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         /* POWERUP TIMERS */
@@ -120,7 +129,9 @@ t<!DOCTYPE html>
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .powerup-pill.active { transform: translateX(0); }
+        .powerup-pill.active {
+            transform: translateX(0);
+        }
 
         .p-icon {
             width: 22px;
@@ -133,10 +144,21 @@ t<!DOCTYPE html>
             font-weight: 900;
         }
 
-        .p-magnet { background: #ec4899; }
-        .p-shield { background: #3b82f6; }
-        .p-jetpack { background: #f97316; }
-        .p-multiplier { background: #a855f7; }
+        .p-magnet {
+            background: #ec4899;
+        }
+
+        .p-shield {
+            background: #3b82f6;
+        }
+
+        .p-jetpack {
+            background: #f97316;
+        }
+
+        .p-multiplier {
+            background: #a855f7;
+        }
 
         .p-bar-bg {
             flex-grow: 1;
@@ -182,7 +204,6 @@ t<!DOCTYPE html>
             font-style: italic;
             text-transform: uppercase;
             background: linear-gradient(135deg, #facc15, #f97316, #ef4444);
-            -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 6px;
             text-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
@@ -218,7 +239,9 @@ t<!DOCTYPE html>
             box-shadow: 0 14px 30px rgba(249, 115, 22, 0.7);
         }
 
-        .btn-action:active { transform: scale(0.98); }
+        .btn-action:active {
+            transform: scale(0.98);
+        }
 
         .countdown-num {
             font-size: 120px;
@@ -230,9 +253,17 @@ t<!DOCTYPE html>
         }
 
         @keyframes pulse {
-            0% { transform: scale(0.8); opacity: 0.5; }
-            100% { transform: scale(1.2); opacity: 1; }
+            0% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
         }
+
         .score-summary {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -251,12 +282,22 @@ t<!DOCTYPE html>
             align-items: center;
         }
 
-        .sum-lbl { font-size: 13px; color: #94a3b8; text-transform: uppercase; font-weight: 700; }
-        .sum-val { font-size: 22px; font-weight: 900; }
+        .sum-lbl {
+            font-size: 13px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .sum-val {
+            font-size: 22px;
+            font-weight: 900;
+        }
     </style>
     <!-- Three.js Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
+
 <body>
 
     <div id="game-container"></div>
@@ -272,19 +313,27 @@ t<!DOCTYPE html>
                 <div class="powerup-list">
                     <div class="powerup-pill" id="pill-magnet">
                         <div class="p-icon p-magnet">M</div>
-                        <div class="p-bar-bg"><div class="p-bar-fill" id="fill-magnet"></div></div>
+                        <div class="p-bar-bg">
+                            <div class="p-bar-fill" id="fill-magnet"></div>
+                        </div>
                     </div>
                     <div class="powerup-pill" id="pill-shield">
                         <div class="p-icon p-shield">S</div>
-                        <div class="p-bar-bg"><div class="p-bar-fill" id="fill-shield"></div></div>
+                        <div class="p-bar-bg">
+                            <div class="p-bar-fill" id="fill-shield"></div>
+                        </div>
                     </div>
                     <div class="powerup-pill" id="pill-jetpack">
                         <div class="p-icon p-jetpack">J</div>
-                        <div class="p-bar-bg"><div class="p-bar-fill" id="fill-jetpack"></div></div>
+                        <div class="p-bar-bg">
+                            <div class="p-bar-fill" id="fill-jetpack"></div>
+                        </div>
                     </div>
                     <div class="powerup-pill" id="pill-multiplier">
                         <div class="p-icon p-multiplier">2X</div>
-                        <div class="p-bar-bg"><div class="p-bar-fill" id="fill-multiplier"></div></div>
+                        <div class="p-bar-bg">
+                            <div class="p-bar-fill" id="fill-multiplier"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -319,7 +368,7 @@ t<!DOCTYPE html>
 
     <!-- Game Over Screen -->
     <div class="screen hidden" id="screen-gameover">
-        <div class="game-title" style="background: linear-gradient(135deg, #ef4444, #f97316); -webkit-background-clip: text;">GAME OVER</div>
+        <div class="game-title" style="background: linear-gradient(135deg, #ef4444, #f97316) text;">GAME OVER</div>
         <div class="game-sub">Train Collision</div>
 
         <div class="score-summary">
@@ -359,8 +408,8 @@ t<!DOCTYPE html>
                     osc.connect(gain);
                     gain.connect(this.ctx.destination);
                     osc.start();
-                    osc.stop(this.ctx.currentTime + duration);
-                } catch(e) {}
+                   osc.stop(this.ctx.currentTime + duration);
+                } catch (e) { }
             }
             jump() {
                 if (!this.ctx) return;
@@ -671,7 +720,7 @@ t<!DOCTYPE html>
                 );
                 body.position.set(0, 1.6, 0);
                 body.castShadow = true;
-                
+
                 // Train Front Lights
                 const light = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.2, 0.1), new THREE.MeshBasicMaterial({ color: 0xffffff }));
                 light.position.set(-0.8, 1.2, 6.01);
@@ -1081,4 +1130,5 @@ t<!DOCTYPE html>
         window.onload = initEngine;
     </script>
 </body>
+
 </html>
